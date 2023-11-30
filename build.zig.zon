@@ -1,0 +1,22 @@
+.{
+    .name = "timez",
+    .version = "0.0.1",
+    // not really, but that's what I'm working with
+    .minimum_zig_version = "0.12.0-dev.1754+2a3226453",
+
+    .dependencies = .{
+        //.example = .{
+        //    .url = "https://example.com/foo.tar.gz",
+        //    .hash = "...",
+        //    .path = "foo",
+        //},
+    },
+
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "LICENSE.txt",
+        "README.md",
+    },
+}
