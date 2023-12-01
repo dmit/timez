@@ -10,6 +10,9 @@ timez command [arguments...]
 
 ## Build
 
+You'll probably need a recent nightly build of the Zig compiler to build this project.
+Consider using [zigup](https://github.com/marler8997/zigup) (`zigup master`).
+
 ```console
 zig build -Doptimize=ReleaseFast
 ```
