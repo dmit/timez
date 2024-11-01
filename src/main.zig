@@ -113,10 +113,10 @@ fn waitForProcess(self: *std.process.Child) !?ProcessTimings {
     var exitTime: std.os.windows.FILETIME = undefined;
     var kernelTime: std.os.windows.FILETIME = undefined;
     var userTime: std.os.windows.FILETIME = undefined;
-    const processTimesSuccess = std.os.windows.kernel32.GetProcessTimes(self.id, &creationTime, &exitTime, &kernelTime, &userTime);
+    const processTimesSuccess = GetProcessTimes(self.id, &creationTime, &exitTime, &kernelTime, &userTime);
 
-    os.close(self.id);
-    os.close(self.thread_handle);
+    windows.CloseHandle(self.id);
+    windows.CloseHandle(self.thread_handle);
     cleanupStreams(self);
 
     try result;
@@ -143,3 +143,10 @@ fn cleanupStreams(self: *std.process.Child) void {
         self.stderr = null;
     }
 }
+
+// Extern Windows function that's not exposed by std
+const BOOL = std.os.windows.BOOL;
+const FILETIME = std.os.windows.FILETIME;
+const HANDLE = std.os.windows.HANDLE;
+const WINAPI = std.os.windows.WINAPI;
+extern "kernel32" fn GetProcessTimes(in_hProcess: HANDLE, out_lpCreationTime: *FILETIME, out_lpExitTime: *FILETIME, out_lpKernelTime: *FILETIME, out_lpUserTime: *FILETIME) callconv(WINAPI) BOOL;

@@ -2,7 +2,7 @@
     .name = "timez",
     .version = "0.0.1",
     // not really, but that's what I'm working with
-    .minimum_zig_version = "0.12.0-dev.1754+2a3226453",
+    .minimum_zig_version = "0.14.0-dev.2050+4adf63aef",
 
     .dependencies = .{
         //.example = .{
