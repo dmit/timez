@@ -14,7 +14,7 @@ You'll probably need a recent nightly build of the Zig compiler to build this pr
 Consider using [zigup](https://github.com/marler8997/zigup) (`zigup master`).
 
 ```console
-zig build -Doptimize=ReleaseFast
+zig build -Doptimize=ReleaseSafe
 ```
 
 The artifacts will be placed in `zig-out/bin/`.
